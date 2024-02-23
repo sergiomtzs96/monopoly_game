@@ -8,6 +8,9 @@ import com.sergiomtzs.monopoly.data.BaseCasilla;
 import com.sergiomtzs.monopoly.data.CasillaSpecial;
 import java.util.ArrayList;
 
+import static com.sergiomtzs.monopoly.data.Special.START;
+
+
 /**
  *
  * @author Sergio
@@ -18,16 +21,14 @@ public class Monopoly {
     private static ArrayList<BaseCasilla> arrayListCasillas = new ArrayList<BaseCasilla>();
     
     public static void main(String[] args) {
-        //generateBoard();
+        generateBoard();
         
     }
 
-//    private static void generateBoard() {
-//        CasillaSpecial casillaSpecial = new CasillaSpecial();
-////        casillaSpecial.setSpecial(START);
-//        arrayListCasillas.add(
-//                CasillaSpecial()
-//        );
-//    }
+    private static void generateBoard() {
+        CasillaSpecial casillaSpecial = new CasillaSpecial();
+        casillaSpecial.setSpecial(START);
+        arrayListCasillas.add(casillaSpecial);
+    }
 }
 

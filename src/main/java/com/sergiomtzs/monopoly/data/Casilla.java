@@ -185,10 +185,6 @@ class CasillaPublicServices extends BaseCasilla{
     
 }
 
-enum Special {
-    START, JAIL, PARKING, GOTOJAIL
-}
-
 enum GroupColor{
     MARRON, CELESTE, MAGENTA, NARANJA, ROJO, AMARILLO, VERDE, AZUL
 }
