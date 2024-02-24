@@ -11,7 +11,9 @@ import com.sergiomtzs.monopoly.igu.Tablero;
 import java.util.ArrayList;
 
 import static com.sergiomtzs.monopoly.data.Special.START;
+import com.sergiomtzs.monopoly.igu.AutoTablero;
 import com.sergiomtzs.monopoly.igu.Registro;
+import com.sergiomtzs.monopoly.igu.TableroBase;
 
 
 /**
@@ -36,7 +38,8 @@ public class Monopoly {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro().setVisible(true);
+                new TableroBase().setVisible(true);
+                //new AutoTablero().setVisible(true);
             }
         });
       
