@@ -36,10 +36,18 @@ public class TableroBase {
         for(int i = 0; i < 100; i++){
             JPanel subpanelX = new JPanel();
             
-                Color color = getRandomColor();
-                subpanelX.setBackground(color);
-
-                System.out.println("iteracion: " + i + " color: "+color);
+                switch(i){
+                    case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                         10, 20, 30, 40, 50, 60, 70, 80, 90, 
+                         91, 92, 93, 94, 95, 96, 97, 98, 99,
+                         19, 29, 39, 49, 59, 69, 79, 89 -> {
+                        subpanelX.setBackground(getRandomColor());
+                    }
+                    default -> subpanelX.setBackground(new java.awt.Color(255, 255, 255));
+                   
+                }
+            
+                System.out.println("iteracion: " + i + " color: "+subpanelX.getBackground());
             
             panelMain.add(subpanelX);
         }
