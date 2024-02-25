@@ -1,29 +1,80 @@
 package com.sergiomtzs.monopoly.igu;
 
 import java.util.ArrayList;
-
+import javax.swing.*;
+import java.awt.*;
+     
 /**
  *
  * @author Jero
  */
-public class TableroBase extends javax.swing.JFrame {
+public class TableroBase {
+   
     
-    public TableroBase(){
-        iniciar();
+    private JFrame frame;
+    private JPanel panelMain;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private BoxLayout boxlayout;
+    private int width;
+    private int height;
+    
+    
+    public TableroBase(int w, int h){
+        frame = new JFrame();
+        panelMain = new JPanel(new GridLayout(10, 10));
+        width = w;
+        height = h;
     }
 
-    private void iniciar() {
+    public void initGUI() {
        
-     
-         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-         
-         ArrayList<javax.swing.JPanel> listCasillas = new ArrayList<>();
-                
-        for(int i = 0; i <= 10; i++){
+        frame.setSize(width, height);
+        frame.setTitle("Monopoly");
+      
+        for(int i = 0; i < 100; i++){
+            JPanel subpanelX = new JPanel();
             
-            javax.swing.JPanel casilla = new javax.swing.JPanel();
+                Color color = getRandomColor();
+                subpanelX.setBackground(color);
+
+                System.out.println("iteracion: " + i + " color: "+color);
             
-            casilla.setBackground(new java.awt.Color(50, 255, 50));
+            panelMain.add(subpanelX);
+        }
+       
+        frame.add(panelMain);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        
+    }
+    
+    
+    //Para obtener el gris correspondiente a un valor dado un valor máximo (escala de grises)
+    private int getScaleGreyInt(int maxInt, int currentInt){
+        int color = (currentInt*255) / maxInt;
+         System.out.println("getScaleGreyInt: color: "+color);
+        return color;
+    }
+    
+    //Para obtener color aleatorio
+    private Color getRandomColor() {
+        int R = getRandomNumber(0, 255);
+        int G = getRandomNumber(0, 255);
+        int B = getRandomNumber(0, 255);
+        return new java.awt.Color(R, G, B);
+    }
+    
+    public int getRandomNumber(int min, int max) {
+    return (int) ((Math.random() * (max - min)) + min);
+}
+    
+    
+    ArrayList<javax.swing.JPanel> listCasillas = new ArrayList<>();
+
+    private JPanel getCasilla() {
+        javax.swing.JPanel casilla = new javax.swing.JPanel();
             
             javax.swing.GroupLayout casillaLayout = new javax.swing.GroupLayout(casilla);
             casilla.setLayout(casillaLayout);
@@ -33,35 +84,10 @@ public class TableroBase extends javax.swing.JFrame {
             casillaLayout.setVerticalGroup(casillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 100, Short.MAX_VALUE)
             );
-                 
-            listCasillas.add(casilla);
-        }
-         
-    
-         
-         
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        
-        int a = 0;
-        
-        for(javax.swing.JPanel panel: listCasillas){
-            layout.addLayoutComponent("casilla"+a, panel);
-            a++;
-        } 
-       
-
-        pack();
+            
+            casilla.setBackground(new java.awt.Color(50, 255, 50));
+            
+            return casilla;
     }
-    
     
 }
